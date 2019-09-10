@@ -16,5 +16,5 @@ class ProductPageLocators:
     PRODUCT_TITLE = (By.CSS_SELECTOR, 'div.product_main > h1')
     PRODUCT_PRICE = (By.CSS_SELECTOR, 'p.price_color')
     RESULT_MESSAGES_FORM = (By.ID, 'messages')
-    RESULT_MESSAGE_TITLE = (By.CSS_SELECTOR, '#messages > div:nth-child(1) > div')
+    RESULT_MESSAGE_TITLE = (By.CSS_SELECTOR, '#messages > div:nth-child(1) > div > strong')
     RESULT_BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, '.alert-info > div > p:nth-child(1) > strong')

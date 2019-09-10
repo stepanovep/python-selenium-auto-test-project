@@ -21,9 +21,9 @@ class ProductPage(BasePage):
 
     def result_message_should_contain_title(self, product_title):
         assert self.is_element_present(*ProductPageLocators.RESULT_MESSAGES_FORM)
-        message_with_title = self.browser.find_element(*ProductPageLocators.RESULT_MESSAGE_TITLE).text
-        print(f'message_result={message_with_title}')
-        assert product_title in message_with_title
+        title_in_result_message = self.browser.find_element(*ProductPageLocators.RESULT_MESSAGE_TITLE).text
+        print(f'message_result={title_in_result_message}')
+        assert product_title == title_in_result_message, f'expected: {product_title}, got: {title_in_result_message}'
 
     def basket_total_price_should_equal_product_price(self, product_price):
         assert self.is_element_present(*ProductPageLocators.RESULT_MESSAGES_FORM)
