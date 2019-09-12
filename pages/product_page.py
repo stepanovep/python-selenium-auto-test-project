@@ -20,13 +20,19 @@ class ProductPage(BasePage):
         return price_element.text
 
     def result_message_should_contain_title(self, product_title):
-        assert self.is_element_present(*ProductPageLocators.RESULT_MESSAGES_FORM)
-        title_in_result_message = self.browser.find_element(*ProductPageLocators.RESULT_MESSAGE_TITLE).text
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE_FORM)
+        title_in_result_message = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE_TITLE).text
         print(f'message_result={title_in_result_message}')
         assert product_title == title_in_result_message, f'expected: {product_title}, got: {title_in_result_message}'
 
     def basket_total_price_should_equal_product_price(self, product_price):
-        assert self.is_element_present(*ProductPageLocators.RESULT_MESSAGES_FORM)
-        basket_total_price = self.browser.find_element(*ProductPageLocators.RESULT_BASKET_TOTAL_PRICE).text
+        assert self.is_element_present(*ProductPageLocators.SUCCESS_MESSAGE_FORM)
+        basket_total_price = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE_BASKET_TOTAL_PRICE).text
         print(f'basket_total_price={basket_total_price}')
         assert basket_total_price == product_price
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE_TITLE), 'Success message is presented, but should not be'
+
+    def should_success_message_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE_TITLE), 'Success message should disappeared, but it did not'
